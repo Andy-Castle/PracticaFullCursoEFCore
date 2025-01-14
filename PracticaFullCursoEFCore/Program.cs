@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using PracticaFullCursoEFCore.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionSQL")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
