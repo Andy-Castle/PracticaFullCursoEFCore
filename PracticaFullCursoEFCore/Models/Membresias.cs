@@ -11,11 +11,11 @@ namespace PracticaFullCursoEFCore.Models
         [StringLength(50)]
         [Display(Name = "Tipos de Membresia")]
         [Required(ErrorMessage = "Agregue una membresia")]
-        public required string TípoMembresia { get; set; }
+        public required string TipoMembresia { get; set; }
+
 
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de inicio")]
-
         public DateTime FechaInicio { get; set; }
 
 
@@ -26,6 +26,7 @@ namespace PracticaFullCursoEFCore.Models
 
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Display(Name = "Costo Mensual")]
         public decimal CostoMensual { get; set; }
 
 
