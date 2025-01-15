@@ -12,8 +12,8 @@ using PracticaFullCursoEFCore.Data;
 namespace PracticaFullCursoEFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250114213700_RelacionMuchosAMuchosPedidoProductos")]
-    partial class RelacionMuchosAMuchosPedidoProductos
+    [Migration("20250115215722_CreacionDenuevoDB")]
+    partial class CreacionDenuevoDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,7 +83,7 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.Property<DateTime>("FechaInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TípoMembresia")
+                    b.Property<string>("TipoMembresia")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -115,6 +115,9 @@ namespace PracticaFullCursoEFCore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Pedido"));
+
+                    b.Property<DateTime>("FechaLlegada")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaPedido")
                         .HasColumnType("datetime2");
@@ -207,8 +210,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
                 {
-                    b.Navigation("Clientes")
-                        .IsRequired();
+                    b.Navigation("Clientes");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Pedidos", b =>

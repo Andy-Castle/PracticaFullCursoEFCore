@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace PracticaFullCursoEFCore.Models
 {
@@ -11,16 +12,19 @@ namespace PracticaFullCursoEFCore.Models
         [StringLength(100)]
         [Display(Name = "Nombre del producto")]
         [Required(ErrorMessage = "El nombre es requerido")]
-        public required string Nombre { get; set; }
+        public string Nombre { get; set; }
 
 
         [StringLength(500)]
         [Display(Name = "Descripción del producto")]
-        public string? Descripcion { get; set; }
+        [DefaultValue("Sin descripción")]
+
+        public string Descripcion { get; set; }
 
 
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Required(ErrorMessage ="El precio es requerido")]
         public decimal Precio { get; set; }
 
 

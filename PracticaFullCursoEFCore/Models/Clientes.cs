@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -14,7 +15,7 @@ namespace PracticaFullCursoEFCore.Models
         [StringLength(100)]
         [Display(Name ="Nombre del cliente")]
         [Required(ErrorMessage ="El nombre es requerido")]
-        public required string Nombre { get; set; }
+        public string Nombre { get; set; }
 
 
         [StringLength(100)]
@@ -22,16 +23,19 @@ namespace PracticaFullCursoEFCore.Models
         [EmailAddress(ErrorMessage ="Porfavor ingrese un email valido")]
         [DataType(DataType.EmailAddress)]
         [Display(Name ="Correo Electronico")]
-        public required string Correo { get; set; }
+        public string Correo { get; set; }
 
 
         [Phone]
         [DataType(DataType.PhoneNumber)]
         [StringLength(15)]
+        [DefaultValue("##########")]
         public string Telefono { get; set; }
 
 
         [StringLength(200)]
+        [DefaultValue("Sin dirección")]
+
         public string Direccion {  get; set; }
 
         //Esta es para la relación uno a uno Cliente - Membresia

@@ -59,7 +59,7 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.HasIndex("ID_Membresia")
                         .IsUnique();
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
@@ -87,7 +87,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasKey("ID_Membresia");
 
-                    b.ToTable("Membresias", (string)null);
+                    b.ToTable("Membresias");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.PedidoProductos", b =>
@@ -102,7 +102,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasIndex("ID_Producto");
 
-                    b.ToTable("PedidoProductos", (string)null);
+                    b.ToTable("PedidoProductos");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Pedidos", b =>
@@ -112,6 +112,9 @@ namespace PracticaFullCursoEFCore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Pedido"));
+
+                    b.Property<DateTime>("FechaLlegada")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaPedido")
                         .HasColumnType("datetime2");
@@ -127,7 +130,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasIndex("ID_Cliente");
 
-                    b.ToTable("Pedidos", (string)null);
+                    b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Productos", b =>
@@ -153,7 +156,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasKey("ID_Producto");
 
-                    b.ToTable("Productos", (string)null);
+                    b.ToTable("Productos");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Clientes", b =>
@@ -204,8 +207,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
                 {
-                    b.Navigation("Clientes")
-                        .IsRequired();
+                    b.Navigation("Clientes");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Pedidos", b =>

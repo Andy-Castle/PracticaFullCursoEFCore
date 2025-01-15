@@ -11,11 +11,18 @@ namespace PracticaFullCursoEFCore.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de Pedido")]
-        public DateTime FechaPedido { get; set; }
+        [Required]
+        public DateTime FechaPedido { get; set; } = DateTime.Now;
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de llegada")]
+        [Required]
+        public DateTime FechaLlegada { get; set; }
 
 
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
+        [Required(ErrorMessage = "El total es requerido")]
         public decimal Total {  get; set; }
 
 

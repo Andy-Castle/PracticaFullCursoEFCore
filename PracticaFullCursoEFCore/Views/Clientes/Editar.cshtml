@@ -1,0 +1,89 @@
+﻿@model PracticaFullCursoEFCore.ViewModels.ClienteMembresiaVM
+@{
+    ViewData["Title"] = "Editar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<h3 class="text-center">Editar un cliente</h3>
+<form method="post" asp-action="Editar">
+
+
+    <!--Importante-->
+    <input type="hidden" asp-for="Clientes.ID_Cliente" />
+    <input type="hidden" asp-for="Clientes.ID_Membresia" />
+
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12 mt-4">
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Clientes.Nombre"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Clientes.Nombre" class="form-control" />
+                    <span asp-validation-for="Clientes.Nombre" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Clientes.Correo"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Clientes.Correo" class="form-control" />
+                    <span asp-validation-for="Clientes.Correo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Clientes.Telefono"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Clientes.Telefono" class="form-control" />
+                    <span asp-validation-for="Clientes.Telefono" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Clientes.Direccion"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Clientes.Direccion" class="form-control" />
+                    <span asp-validation-for="Clientes.Direccion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Clientes.Membresias"></label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(l => l.Clientes.ID_Membresia, Model.ListaMembresias, "--Lista de membresias--", new { @class = "form-control" })
+                    <span asp-validation-for="Clientes.ID_Membresia" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3">
+            <a asp-action="Index">Volver a lista</a>
+        </div>
+        <div class="col-5 offset-4">
+            <button type="submit" class="btn btn-primary form-control">Editar</button>
+            &nbsp;
+        </div>
+    </div>
+</form>
+
+<!--Esto es para validar el form de lado del cliente-->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
