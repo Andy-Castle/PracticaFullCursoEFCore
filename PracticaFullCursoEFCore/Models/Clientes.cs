@@ -41,6 +41,6 @@ namespace PracticaFullCursoEFCore.Models
 
 
         //Esta es para la relación uno a muchos Cliente - Pedido
-        public required List<Pedidos> Pedidos { get; set; }
+        public  List<Pedidos>? Pedidos { get; set; }
     }
 }
