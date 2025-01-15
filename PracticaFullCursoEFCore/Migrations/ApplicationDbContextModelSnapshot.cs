@@ -59,7 +59,7 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.HasIndex("ID_Membresia")
                         .IsUnique();
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
@@ -87,7 +87,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasKey("ID_Membresia");
 
-                    b.ToTable("Membresias");
+                    b.ToTable("Membresias", (string)null);
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.PedidoProductos", b =>
@@ -102,7 +102,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasIndex("ID_Producto");
 
-                    b.ToTable("PedidoProductos");
+                    b.ToTable("PedidoProductos", (string)null);
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Pedidos", b =>
@@ -127,7 +127,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasIndex("ID_Cliente");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedidos", (string)null);
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Productos", b =>
@@ -153,7 +153,7 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasKey("ID_Producto");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Productos", (string)null);
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Clientes", b =>

@@ -74,3 +74,10 @@
         </div>
     </div>
 </form>
+
+<!--Esto es para validar el form de lado del cliente-->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

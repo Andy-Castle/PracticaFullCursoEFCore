@@ -37,13 +37,15 @@ namespace PracticaFullCursoEFCore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Crear (Clientes cliente)
+        public IActionResult Crear(ClienteMembresiaVM clienteMembresia)
         {
+            var datos = clienteMembresia;
+
             if (ModelState.IsValid)
             {
-                _context.Clientes.Add(cliente);
+                _context.Clientes.Add(clienteMembresia.Clientes);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));   
+                return RedirectToAction(nameof(Index));
             }
 
             ClienteMembresiaVM clienteMembresias = new ClienteMembresiaVM();

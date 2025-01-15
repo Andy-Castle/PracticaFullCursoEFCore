@@ -5,9 +5,9 @@ namespace PracticaFullCursoEFCore.ViewModels
 {
     public class ClienteMembresiaVM
     {
-        public Clientes? Clientes { get; set; } 
+        public  Clientes Clientes { get; set; }
 
-        public IEnumerable<SelectListItem>? ListaMembresias { get; set; }
+        public IEnumerable<SelectListItem> ListaMembresias { get; set; }
 
      
     }

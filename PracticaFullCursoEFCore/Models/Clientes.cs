@@ -28,19 +28,19 @@ namespace PracticaFullCursoEFCore.Models
         [Phone]
         [DataType(DataType.PhoneNumber)]
         [StringLength(15)]
-        public string? Telefono { get; set; }
+        public string Telefono { get; set; }
 
 
         [StringLength(200)]
-        public string? Direccion {  get; set; }
+        public string Direccion {  get; set; }
 
         //Esta es para la relación uno a uno Cliente - Membresia
         [ForeignKey("Membresias")]
         public int ID_Membresia { get; set; }
-        public required Membresias Membresias { get; set; }
+        public  Membresias Membresias { get; set; }
 
 
         //Esta es para la relación uno a muchos Cliente - Pedido
-        public  List<Pedidos>? Pedidos { get; set; }
+        public  List<Pedidos> Pedidos { get; set; }
     }
 }
