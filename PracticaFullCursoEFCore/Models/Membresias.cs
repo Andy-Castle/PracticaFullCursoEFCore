@@ -31,6 +31,6 @@ namespace PracticaFullCursoEFCore.Models
 
 
         //Esta es para la relación uno a uno
-        public required Clientes Clientes { get; set; }
+        public Clientes? Clientes { get; set; }
     }
 }
