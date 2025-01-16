@@ -1,0 +1,76 @@
+﻿@model PracticaFullCursoEFCore.ViewModels.PedidoClienteVM
+@{
+    ViewData["Title"] = "Crear Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<h3 class="text-center">Crear un nuevo Artículo</h3>
+<form method="post" asp-action="Crear">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12 mt-4">
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Pedidos.FechaPedido"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Pedidos.FechaPedido" class="form-control" />
+                    <span asp-validation-for="Pedidos.FechaPedido" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Pedidos.FechaLlegada"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Pedidos.FechaLlegada" class="form-control" />
+                    <span asp-validation-for="Pedidos.FechaLlegada" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Pedidos.Total"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Pedidos.Total" class="form-control" />
+                    <span asp-validation-for="Pedidos.Total" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="Pedidos.Clientes"></label>
+                </div>
+                <!--Esto es para hacer el select usando el nombre de los clientes-->
+                <div class="col-8">
+                    @Html.DropDownListFor(u => u.Pedidos.ID_Cliente, Model.ListaClientes, "--Lista de clientes--",
+                             new { @class = "form-control" })
+                    <span asp-validation-for="Pedidos.ID_Cliente" class="text-danger"></span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3">
+            <a asp-action="Index">Volver a lista</a>
+        </div>
+        <div class="col-5 offset-4">
+            <button type="submit" class="btn btn-primary form-control">Crear</button>
+            &nbsp;
+        </div>
+    </div>
+</form>
+
+<!--Esto es para validar el form de lado del cliente-->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

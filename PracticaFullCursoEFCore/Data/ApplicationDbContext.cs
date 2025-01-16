@@ -23,8 +23,10 @@ namespace PracticaFullCursoEFCore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Relación muchos a muchos Pedido/Producto primary key
-            modelBuilder.Entity<PedidoProductos>().HasKey(pedidoProducto => new { pedidoProducto.ID_Pedido, pedidoProducto.ID_Producto});
+            //Relación muchos a muchos Pedido/Producto primary key compuesta
+            //modelBuilder.Entity<PedidoProductos>().HasKey(pedidoProducto => new { pedidoProducto.ID_Pedido, pedidoProducto.ID_Producto});
+            //Clave Primaria
+            modelBuilder.Entity<PedidoProductos>().HasKey(pp => pp.ID);
             //Que el email se unico - Clientes
             modelBuilder.Entity<Clientes>().HasIndex(c => c.Correo).IsUnique();
             //Presición de decimales costoMensual - Membresias

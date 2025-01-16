@@ -1,0 +1,72 @@
+﻿@model PracticaFullCursoEFCore.ViewModels.PedidoProductoVM
+@{
+    ViewData["Title"] = "Adminisrar mi pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<h3 class="text-center">Administrar etiquetas para el artículo</h3>
+<div class="row">
+    <form method="post" asp-action="AdministrarProductos">
+
+        <!--Importante para el método AdministrarEtiquetas-->
+        <input type="hidden" asp-for="Pedido.ID_Pedido" />
+        <input type="hidden" asp-for="PedidoProducto.ID_Pedido" />
+
+
+
+
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-12 mt-4">
+
+                <div class="row">
+                    <div class="col-4">
+                        <label for="productos">Productos</label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(u => u.PedidoProducto.ID_Producto, Model.ListaProductos, "--Seleccionar Producto--",
+                                 new { @class = "form-control" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-3">
+                <a asp-action="Index">Volver a lista</a>
+            </div>
+            <div class="col-5 offset-4">
+                <button type="submit" class="btn btn-primary form-control">Añadir productos al pedido</button>
+                &nbsp;
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <form method="post" action="EliminarProductos">
+            <!--Importante para el método AdministrarProductos-->
+            <input type="hidden" asp-for="@Model.Pedido.ID_Pedido" />
+            <div class="row text-right">
+                <div class="col-12 text-right h4 text-primary">
+                    Productos de este pedido
+                </div>
+            </div>
+            @foreach (var item in Model.ListaPedidosProductos)
+            {
+                <div class="row pb-2">
+                    <div class="col-8 text-right" style="font-size:24px;">@item.Productos.Nombre</div>
+                    <div class="col-8 text-right" style="font-size:24px;">@item.Productos.Precio</div>
+
+                    <div class="col-4">
+                        <button asp-action="EliminarProductos" type="submit" class="btn btn-danger form-control" asp-route-idProducto="@item.ID_Producto" asp-route-idPedido="@item.ID_Pedido">Eliminar Producto</button>
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+
+</div>
