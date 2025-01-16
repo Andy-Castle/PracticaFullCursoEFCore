@@ -20,6 +20,8 @@ namespace PracticaFullCursoEFCore.Data
 
         public DbSet<PedidoProductos> PedidoProductos { get; set; }
 
+        public DbSet<VistaMembresia> VistaMembresias { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +37,9 @@ namespace PracticaFullCursoEFCore.Data
             modelBuilder.Entity<Pedidos>().Property(p => p.Total).HasPrecision(18, 2);
             //Presición de decimales Precio - Productos
             modelBuilder.Entity<Productos>().Property(p => p.Precio).HasPrecision(18, 2);
+
+            //Carga la vista
+            modelBuilder.Entity<VistaMembresia>().HasNoKey().ToView("ObtenerMembresias");
 
 
             base.OnModelCreating(modelBuilder);
