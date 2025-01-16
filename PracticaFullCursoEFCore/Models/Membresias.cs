@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PracticaFullCursoEFCore.Models
 {
@@ -17,7 +18,7 @@ namespace PracticaFullCursoEFCore.Models
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de inicio")]
         [Required(ErrorMessage = "Agregue una Fecha de inicio")]
-        public DateTime FechaInicio { get; set; }
+        public DateTime FechaInicio { get; set; } = DateTime.Now;
 
 
         [DataType(DataType.Date)]
@@ -32,8 +33,7 @@ namespace PracticaFullCursoEFCore.Models
         [Required(ErrorMessage = "Agregue el costo mensual")]
         public decimal CostoMensual { get; set; }
 
-
-        //Esta es para la relación uno a uno
-        public Clientes Clientes { get; set; }
+        //Esta es para la relación uno a Muchos Cliente - Membresia
+        public List<Clientes> Clientes { get; set; }
     }
 }

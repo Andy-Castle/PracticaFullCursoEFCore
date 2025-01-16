@@ -30,15 +30,14 @@ namespace PracticaFullCursoEFCore.Models
         [DataType(DataType.PhoneNumber)]
         [StringLength(15)]
         [DefaultValue("##########")]
-        public string Telefono { get; set; }
+        public string Telefono { get; set; } = "0000000000";
 
 
         [StringLength(200)]
         [DefaultValue("Sin dirección")]
+        public string Direccion { get; set; } = "Sin dirección";
 
-        public string Direccion {  get; set; }
-
-        //Esta es para la relación uno a uno Cliente - Membresia
+        //Esta es para la relación uno a Muchos
         [ForeignKey("Membresias")]
         public int ID_Membresia { get; set; }
         public  Membresias Membresias { get; set; }

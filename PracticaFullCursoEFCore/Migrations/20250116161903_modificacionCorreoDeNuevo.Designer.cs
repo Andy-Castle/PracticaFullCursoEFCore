@@ -12,8 +12,8 @@ using PracticaFullCursoEFCore.Data;
 namespace PracticaFullCursoEFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250115215722_CreacionDenuevoDB")]
-    partial class CreacionDenuevoDB
+    [Migration("20250116161903_modificacionCorreoDeNuevo")]
+    partial class modificacionCorreoDeNuevo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,8 +59,7 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.HasIndex("Correo")
                         .IsUnique();
 
-                    b.HasIndex("ID_Membresia")
-                        .IsUnique();
+                    b.HasIndex("ID_Membresia");
 
                     b.ToTable("Clientes");
                 });
@@ -165,8 +164,8 @@ namespace PracticaFullCursoEFCore.Migrations
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Clientes", b =>
                 {
                     b.HasOne("PracticaFullCursoEFCore.Models.Membresias", "Membresias")
-                        .WithOne("Clientes")
-                        .HasForeignKey("PracticaFullCursoEFCore.Models.Clientes", "ID_Membresia")
+                        .WithMany("Clientes")
+                        .HasForeignKey("ID_Membresia")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

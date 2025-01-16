@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticaFullCursoEFCore.Data;
 
@@ -11,9 +12,11 @@ using PracticaFullCursoEFCore.Data;
 namespace PracticaFullCursoEFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250116154144_DeNuevoDB")]
+    partial class DeNuevoDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +42,6 @@ namespace PracticaFullCursoEFCore.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("ID_Membresia")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -55,8 +55,6 @@ namespace PracticaFullCursoEFCore.Migrations
 
                     b.HasIndex("Correo")
                         .IsUnique();
-
-                    b.HasIndex("ID_Membresia");
 
                     b.ToTable("Clientes");
                 });
@@ -79,12 +77,17 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.Property<DateTime>("FechaInicio")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ID_Cliente")
+                        .HasColumnType("int");
+
                     b.Property<string>("TipoMembresia")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ID_Membresia");
+
+                    b.HasIndex("ID_Cliente");
 
                     b.ToTable("Membresias");
                 });
@@ -158,15 +161,15 @@ namespace PracticaFullCursoEFCore.Migrations
                     b.ToTable("Productos");
                 });
 
-            modelBuilder.Entity("PracticaFullCursoEFCore.Models.Clientes", b =>
+            modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
                 {
-                    b.HasOne("PracticaFullCursoEFCore.Models.Membresias", "Membresias")
-                        .WithMany("Clientes")
-                        .HasForeignKey("ID_Membresia")
+                    b.HasOne("PracticaFullCursoEFCore.Models.Clientes", "Clientes")
+                        .WithMany("Membresias")
+                        .HasForeignKey("ID_Cliente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Membresias");
+                    b.Navigation("Clientes");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.PedidoProductos", b =>
@@ -201,12 +204,9 @@ namespace PracticaFullCursoEFCore.Migrations
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Clientes", b =>
                 {
-                    b.Navigation("Pedidos");
-                });
+                    b.Navigation("Membresias");
 
-            modelBuilder.Entity("PracticaFullCursoEFCore.Models.Membresias", b =>
-                {
-                    b.Navigation("Clientes");
+                    b.Navigation("Pedidos");
                 });
 
             modelBuilder.Entity("PracticaFullCursoEFCore.Models.Pedidos", b =>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PracticaFullCursoEFCore.Data;
 
@@ -11,9 +12,11 @@ using PracticaFullCursoEFCore.Data;
 namespace PracticaFullCursoEFCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250116161654_modificacionCorreo")]
+    partial class modificacionCorreo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,9 +55,6 @@ namespace PracticaFullCursoEFCore.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.HasKey("ID_Cliente");
-
-                    b.HasIndex("Correo")
-                        .IsUnique();
 
                     b.HasIndex("ID_Membresia");
 
